@@ -25,12 +25,14 @@
     <div id="menu-container"></div>
 
     <script>
-      fetch("barra/header.html")
-        .then(res => res.text())
-        .then(data => {
-          // Inyectamos lo común
-          document.getElementById("header").innerHTML = data;
-        });
+ fetch("barra/header.html")
+  .then(res => res.text())  // Convierte el contenido del archivo a texto
+  .then(data => {
+    // Inyecta el contenido en el elemento con id="header"
+    document.getElementById("header").innerHTML = data;
+  })
+  .catch(error => console.error('Error al cargar el header:', error));  // Muestra cualquier error en la consola
+
     </script>
 
     <script src="/script.js"></script>
