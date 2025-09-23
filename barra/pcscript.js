@@ -1,47 +1,55 @@
-document.addEventListener('DOMContentLoaded', function() {
+
+function initMenu() {
     // Variables
     const logo = document.querySelector('#menu-container .logo');
     const menuHorizontal = document.querySelector('#menu-container .menu-horizontal');
     const arrowIcon = document.querySelector('#menu-container .logo i');
     const dropdowns = document.querySelectorAll('#menu-container .dropdown');
 
+    if (!logo || !menuHorizontal || !arrowIcon) {
+        console.warn("El menú aún no está en el DOM.");
+        return;
+    }
+
     let isMenuOpen = false;
 
-    // Función para abrir y cerrar el menú horizontal al hacer clic en el logo
+    // Abrir/cerrar menú al hacer clic en el logo
     logo.addEventListener('click', () => {
         isMenuOpen = !isMenuOpen;
         menuHorizontal.classList.toggle('active', isMenuOpen);
-        arrowIcon.classList.toggle('fa-chevron-up', isMenuOpen); 
-        arrowIcon.classList.toggle('fa-chevron-down', !isMenuOpen); 
+        arrowIcon.classList.toggle('fa-chevron-up', isMenuOpen);
+        arrowIcon.classList.toggle('fa-chevron-down', !isMenuOpen);
     });
 
-    // Agregar interactividad a los elementos del menú (para desplegar submenús)
+    // Submenús desplegables
     dropdowns.forEach(dropdown => {
         const arrow = dropdown.querySelector('i');
 
         dropdown.addEventListener('click', (event) => {
-            // Si se hizo clic en un enlace <a>, permitir la navegación
-            if (event.target.tagName.toLowerCase() === 'a') return;
+            if (event.target.tagName.toLowerCase() === 'a') return; // permitir navegación
 
-            event.preventDefault();  // Prevenir acción solo si no es un enlace
+            event.preventDefault();
 
             // Cerrar otros submenús
             dropdowns.forEach(otherDropdown => {
                 if (otherDropdown !== dropdown) {
                     otherDropdown.classList.remove('active');
-                    otherDropdown.querySelector('i').classList.remove('fa-chevron-up');
-                    otherDropdown.querySelector('i').classList.add('fa-chevron-down');
+                    const otherArrow = otherDropdown.querySelector('i');
+                    if (otherArrow) {
+                        otherArrow.classList.remove('fa-chevron-up');
+                        otherArrow.classList.add('fa-chevron-down');
+                    }
                 }
             });
 
-            // Alternar el submenú de cada ítem
+            // Alternar el submenú actual
             dropdown.classList.toggle('active');
             arrow.classList.toggle('fa-chevron-up');
             arrow.classList.toggle('fa-chevron-down');
         });
     });
 
-    // Cerrar el menú cuando el mouse salga del área de la barra
+    // Cerrar menú al salir el mouse
     menuHorizontal.addEventListener('mouseleave', () => {
         if (!isMenuOpen) {
             menuHorizontal.classList.remove('active');
@@ -49,4 +57,4 @@ document.addEventListener('DOMContentLoaded', function() {
             arrowIcon.classList.add('fa-chevron-down');
         }
     });
-});
+}
