@@ -21,13 +21,13 @@
         <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
     </div>
 
-    <div id="header"></div>
+    <div id="menu-container"></div>
 
       <script>
         fetch("barra/barrapc.html") // O "barra/header.txt" si decides cambiarlo
           .then(res => res.text())
           .then(data => {
-            document.getElementById("header").innerHTML = data; // Inyecta el contenido
+            document.getElementById("menu-container").innerHTML = data; // Inyecta el contenido
           })
           .catch(error => console.error('Error al cargar el header:', error)); // Maneja errores
     </script>
