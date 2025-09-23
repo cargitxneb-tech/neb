@@ -29,16 +29,19 @@ fetch("barra/barrapc.html")
   .then(data => {
       document.getElementById("menu-container").innerHTML = data;
 
-      // Cargar el JS después de inyectar el HTML
       const script = document.createElement('script');
       script.src = 'barra/pcscript.js';
       script.onload = () => {
           console.log("pcscript.js cargado después del header.");
+          if (typeof initMenu === "function") {
+              initMenu(); // 👈 ahora sí se inicializa el menú
+          }
       };
       document.body.appendChild(script);
   })
   .catch(error => console.error('Error al cargar el header:', error));
 </script>
+
     
 </body>
 </html>
