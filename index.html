@@ -23,14 +23,23 @@
 
     <div id="menu-container"></div>
 
-      <script>
-        fetch("barra/barrapc.html") // O "barra/header.txt" si decides cambiarlo
-          .then(res => res.text())
-          .then(data => {
-            document.getElementById("menu-container").innerHTML = data; // Inyecta el contenido
-          })
-          .catch(error => console.error('Error al cargar el header:', error)); // Maneja errores
-    </script>
+  <script>
+    fetch("barra/barrapc.html") // Carga el contenido HTML
+        .then(res => res.text()) // Convierte la respuesta en texto
+        .then(data => {
+            // Inyecta el contenido HTML en el contenedor
+            document.getElementById("menu-container").innerHTML = data;
+
+            // Después de inyectar el contenido, ejecuta el script JavaScript
+            const script = document.createElement('script');
+            script.src = 'barra/pcscript.js'; // Ruta del archivo JavaScript
+            script.onload = () => {
+                console.log("El script pcscript.js se ha cargado y ejecutado.");
+            };
+            document.body.appendChild(script); // Añade el script al final del body para ejecutarlo
+        })
+        .catch(error => console.error('Error al cargar el header:', error)); // Maneja cualquier error
+</script>
 
     
     <script src="barra/pcscript.js"></script>
