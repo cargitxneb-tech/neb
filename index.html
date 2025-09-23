@@ -22,16 +22,45 @@
         <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
     </div>
 
-   
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow"> <!-- No indexar ni seguir enlaces -->
+    
+    <!-- Fuentes y otros recursos -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-      <script>
-        fetch('barra/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('contenido').innerHTML = data;
-            })
-            .catch(error => console.error('Error al cargar el archivo:', error));
-    </script>
+
+       <!-- Enlace a tu archivo CSS externo -->
+        <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <!-- Anuncio -->
+    <div class="anuncio">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8980056699793558" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8980056699793558" data-ad-slot="8577461929" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+    </div>
+
+      <div id="menu2-container"></div>
+      <div id="menu-container"></div>  
+
+  <script>
+    fetch("barra/header.html")
+      .then(res => res.text())
+      .then(data => {
+        // Inyectamos lo común
+        document.getElementById("header").innerHTML = data + 
+          // Aquí escribes directamente tu enlace Contacto en HTML
+          `<a href="contact.html">Contacto</a>
+          </nav>
+        </header>`;
+      });
+  </script>
     
   <script src="/script.js"></script>
 </body>
