@@ -21,18 +21,15 @@
         <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
     </div>
 
-    <div id="menu2-container"></div>
-    <div id="menu-container"></div>
+    <div id="header"></div>
 
-    <script>
- fetch("/barra/barra.html")
-  .then(res => res.text())  // Convierte el contenido del archivo a texto
-  .then(data => {
-    // Inyecta el contenido en el elemento con id="header"
-    document.getElementById("barra").innerHTML = data;
-  })
-  .catch(error => console.error('Error al cargar el header:', error));  // Muestra cualquier error en la consola
-
+      <script>
+        fetch("barra/barrapc.html") // O "barra/header.txt" si decides cambiarlo
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById("header").innerHTML = data; // Inyecta el contenido
+          })
+          .catch(error => console.error('Error al cargar el header:', error)); // Maneja errores
     </script>
 
     <script src="/script.js"></script>
