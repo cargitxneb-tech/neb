@@ -21,48 +21,22 @@
         <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
     </div>
 
-  <!-- Contenedores donde se cargará el contenido del menú -->
-    <div id="menu-container"></div>
-    <div id="menu2-container"></div>
+  <!-- Aquí se inyecta el contenido -->
+  <div id="dev"></div>
 
-<script>
-fetch("barra/barrapc.html")
-  .then(res => res.text())
-  .then(data => {
-      document.getElementById("menu-container").innerHTML = data;
+  <!-- Llamamos a main.js -->
+  <script src="main.js"></script>
 
-      const script = document.createElement('script');
-      script.src = 'barra/pcscript.js';
-      script.onload = () => {
-          console.log("pcscript.js cargado después del header.");
-          if (typeof initMenu === "function") {
-              initMenu(); // 👈 ahora sí se inicializa el menú
-          }
-      };
-      document.body.appendChild(script);
-  })
-  .catch(error => console.error('Error al cargar el header:', error));
+  <!-- Incluir barra.js -->
+  <script src="barra/barra.js"></script>
 
-  // Cargar barra/barra.html siempre que se necesite
-  fetch("barra/barra.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("menu2-container").innerHTML = data;
-
-      // Cargar script barra.js de nuevo si es necesario
-      const script = document.createElement('script');
-      script.src = 'barra/barra.js';
-      script.onload = () => {
-        console.log("barra.js cargado para barra.html.");
-        if (typeof initMenu2 === "function") {
-          initMenu2(); // Inicializa el menú 2 si la función está disponible
-        }
-      };
-      document.body.appendChild(script);
-    })
-    .catch(error => console.error('Error al cargar barra/barra.html:', error));
-</script>
-  
+  <script>
+    // Inicializar los menús cuando la página esté cargada
+    document.addEventListener('DOMContentLoaded', () => {
+      initMenu();
+      initMenu2();
+    });
+  </script>
 
     
 </body>
