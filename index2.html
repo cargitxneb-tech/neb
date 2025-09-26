@@ -26,34 +26,25 @@
     <div id="menu2-container"></div>
 
 <script>
-  // Comprobar si ya se cargó el contenido de barra/barrapc.html
-  if (!localStorage.getItem('barraPCLoaded')) {
-    // Cargar el contenido de barra/barrapc.html y su script
-    fetch("barra/barrapc.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("menu-container").innerHTML = data;
+fetch("barra/barrapc.html")
+  .then(res => res.text())
+  .then(data => {
+      document.getElementById("menu-container").innerHTML = data;
 
-        // Cargar solo una vez el script barra.js
-        const script = document.createElement('script');
-        script.src = 'barra/barra.js';
-        script.onload = () => {
-          console.log("barra.js cargado para barrapc.html.");
+      const script = document.createElement('script');
+      script.src = 'barra/pcscript.js';
+      script.onload = () => {
+          console.log("pcscript.js cargado después del header.");
           if (typeof initMenu === "function") {
-            initMenu(); // Inicializa el menú si la función está disponible
+              initMenu(); // 👈 ahora sí se inicializa el menú
           }
-        };
-        document.body.appendChild(script);
+      };
+      document.body.appendChild(script);
+  })
+  .catch(error => console.error('Error al cargar el header:', error));
+</script>
 
-        // Marcar que el contenido de barrapc.html ya fue cargado
-        localStorage.setItem('barraPCLoaded', 'true');
-      })
-      .catch(error => console.error('Error al cargar barra/barrapc.html:', error));
-  } else {
-    // Si ya se cargó previamente, asegúrate de que el contenido se muestre
-    document.getElementById("menu-container").innerHTML = "El contenido ya se ha cargado.";
-  }
-
+  <script>
   // Cargar barra/barra.html siempre que se necesite
   fetch("barra/barra.html")
     .then(res => res.text())
@@ -73,6 +64,7 @@
     })
     .catch(error => console.error('Error al cargar barra/barra.html:', error));
 </script>
+  
 
     
 </body>
