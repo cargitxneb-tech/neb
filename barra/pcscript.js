@@ -59,44 +59,47 @@ function initMenu() {
     });
 }
 
-// Variables específicas para el menú 2
-const logo2 = document.querySelector('#menu2-container .logo');
-const menuMobile2 = document.querySelector('#menu2-container .menu-mobile');
-const arrowIcon2 = document.querySelector('#menu2-container .logo i');
-const dropdowns2 = document.querySelectorAll('#menu2-container .dropdown');
+function initMenu2() {
+    // Variables específicas para el menú 2
+    const logo2 = document.querySelector('#menu2-container .logo');
+    const menuMobile2 = document.querySelector('#menu2-container .menu-mobile');
+    const arrowIcon2 = document.querySelector('#menu2-container .logo i');
+    const dropdowns2 = document.querySelectorAll('#menu2-container .dropdown');
 
-let isMenuOpen2 = false;
+    let isMenuOpen2 = false;
 
-// Alternar el menú móvil (menú 2)
-logo2.addEventListener('click', () => {
-    isMenuOpen2 = !isMenuOpen2;
-    menuMobile2.classList.toggle('active', isMenuOpen2);
-    arrowIcon2.classList.toggle('fa-chevron-up', isMenuOpen2); 
-    arrowIcon2.classList.toggle('fa-chevron-down', !isMenuOpen2); 
-});
-
-// Mostrar/ocultar submenús individuales (menú 2)
-dropdowns2.forEach(dropdown => {
-    const arrow2 = dropdown.querySelector('i');
-
-    dropdown.addEventListener('click', (event) => {
-        // Permitir que los enlaces <a> funcionen normalmente
-        if (event.target.tagName.toLowerCase() === 'a') return;
-
-        event.preventDefault();
-
-        // Cerrar otros submenús
-        dropdowns2.forEach(otherDropdown => {
-            if (otherDropdown !== dropdown) {
-                otherDropdown.classList.remove('active');
-                otherDropdown.querySelector('i').classList.remove('fa-chevron-up');
-                otherDropdown.querySelector('i').classList.add('fa-chevron-down');
-            }
-        });
-
-        // Alternar el submenú de cada ítem
-        dropdown.classList.toggle('active');
-        arrow2.classList.toggle('fa-chevron-up');
-        arrow2.classList.toggle('fa-chevron-down');
+    // Alternar el menú móvil (menú 2)
+    logo2.addEventListener('click', () => {
+        isMenuOpen2 = !isMenuOpen2;
+        menuMobile2.classList.toggle('active', isMenuOpen2);
+        arrowIcon2.classList.toggle('fa-chevron-up', isMenuOpen2); 
+        arrowIcon2.classList.toggle('fa-chevron-down', !isMenuOpen2); 
     });
-});
+
+    // Mostrar/ocultar submenús individuales (menú 2)
+    dropdowns2.forEach(dropdown => {
+        const arrow2 = dropdown.querySelector('i');
+
+        dropdown.addEventListener('click', (event) => {
+            // Permitir que los enlaces <a> funcionen normalmente
+            if (event.target.tagName.toLowerCase() === 'a') return;
+
+            event.preventDefault();
+
+            // Cerrar otros submenús
+            dropdowns2.forEach(otherDropdown => {
+                if (otherDropdown !== dropdown) {
+                    otherDropdown.classList.remove('active');
+                    otherDropdown.querySelector('i').classList.remove('fa-chevron-up');
+                    otherDropdown.querySelector('i').classList.add('fa-chevron-down');
+                }
+            });
+
+            // Alternar el submenú de cada ítem
+            dropdown.classList.toggle('active');
+            arrow2.classList.toggle('fa-chevron-up');
+            arrow2.classList.toggle('fa-chevron-down');
+        });
+    });
+}
+
