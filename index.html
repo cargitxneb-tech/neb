@@ -29,7 +29,7 @@ fetch("barra/barrapc.html")
   .then(res => res.text())
   .then(data => {
       document.getElementById("menu-container").innerHTML = data;
-
+       document.getElementById("menu2-container").innerHTML = data;
       const script = document.createElement('script');
       script.src = 'barra/pcscript.js';
       script.onload = () => {
