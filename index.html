@@ -1,4 +1,31 @@
-<script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Fuentes y otros recursos -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Enlace a tu archivo CSS externo -->
+    <link rel="stylesheet" href="barra/barra.css">
+</head>
+<body>
+
+    <!-- Anuncio -->
+    <div class="anuncio">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8980056699793558" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8980056699793558" data-ad-slot="8577461929" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+    </div>
+
+  <!-- Contenedores donde se cargará el contenido del menú -->
+    <div id="menu-container"></div>
+    <div id="menu2-container"></div>
+
+ <script>
   // Comprobamos si ya se ha cargado el contenido anteriormente (usando localStorage)
   if (!localStorage.getItem('barraLoaded')) {
     // Cargar el primer contenido y el script de barra.js
@@ -42,3 +69,7 @@
     })
     .catch(error => console.error('Error al cargar el header:', error));
 </script>
+
+    
+</body>
+</html>
