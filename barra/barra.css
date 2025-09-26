@@ -335,7 +335,7 @@ body {
         color: black;
         text-decoration: none;
         font-size: 16px;
-        font-weight: 300;
+        font-weight: 400;
         padding: 10px 10px;
         display: block;
         transition: background-color 0.3s ease;
@@ -376,3 +376,4 @@ body {
             display: none;
         }
     }
+
