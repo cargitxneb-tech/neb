@@ -1,4 +1,3 @@
-
 function initMenu() {
     // Variables
     const logo = document.querySelector('#menu-container .logo');
@@ -102,4 +101,3 @@ function initMenu2() {
         });
     });
 }
-
