@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- Enlace a tu archivo CSS externo -->
-    <link rel="stylesheet" href="/barra/style.css">
+    <link rel="stylesheet" href="barra/barra.css">
 </head>
 <body>
 
@@ -32,9 +32,9 @@ fetch("barra/barrapc.html")
       document.getElementById("menu-container").innerHTML = data;
 
       const script = document.createElement('script');
-      script.src = 'barra/pcscript.js';
+      script.src = 'barra/barra.js';
       script.onload = () => {
-          console.log("pcscript.js cargado después del header.");
+          console.log("barra.js cargado después del header.");
           if (typeof initMenu === "function") {
               initMenu(); // 👈 ahora sí se inicializa el menú
           }
@@ -53,9 +53,9 @@ fetch("barra/barra.html")
 
       // Cargamos el script específico para el menú 2
       const script = document.createElement('script');
-      script.src = 'barra/pcscript.js';
+      script.src = 'barra/barra.js';
       script.onload = () => {
-          console.log("pcscript.js cargado después del header.");
+          console.log("barra.js cargado después del header.");
           
           // Aseguramos que la función que inicializa el menú 2 esté disponible
           if (typeof initMenu2 === "function") {
