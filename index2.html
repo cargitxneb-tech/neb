@@ -21,23 +21,30 @@
         <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
     </div>
 
-  <!-- Aquí se inyecta el contenido -->
-  <div id="dev"></div>
+    <!-- Aquí se inyecta el contenido del menú desde barra/barra.html -->
+        <div id="dev"></div>
 
-  <!-- Llamamos a main.js -->
-  <script src="main.js"></script>
+    <!-- Cargar el archivo JavaScript de la barra -->
+    <script src="barra/barra.js"></script>
 
-  <!-- Incluir barra.js -->
-  <script src="barra/barra.js"></script>
-
-  <script>
-    // Inicializar los menús cuando la página esté cargada
-    document.addEventListener('DOMContentLoaded', () => {
-      initMenu();
-      initMenu2();
-    });
-  </script>
-
+    <!-- Inyectar el archivo barra/barrapc.html con JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('barra/barrapc.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Inyectar el contenido de barra/barrapc.html en el div con id="dev"
+                    document.getElementById('dev').innerHTML = data;
+                    
+                    // Inicializar los menús una vez se haya inyectado el contenido
+                    initMenu();  // Para el menú de escritorio
+                    initMenu2(); // Para el menú móvil
+                })
+                .catch(error => {
+                    console.error("Error al cargar el archivo barra/barrapc.html:", error);
+                });
+        });
+    </script>
     
 </body>
 </html>
