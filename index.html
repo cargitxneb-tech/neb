@@ -25,33 +25,48 @@
     <div id="menu-container"></div>
     <div id="menu2-container"></div>
 
-    <script>
-    // Cargar los menús desde barra/barrapc.html
-    fetch("barra/barrapc.html")
-        .then(res => res.text())
-        .then(data => {
-            // Insertar el contenido de barrapc.html en ambos contenedores
-            document.getElementById("menu-container").innerHTML = data;
-            document.getElementById("menu2-container").innerHTML = data;
+   <script>
+fetch("barra/barrapc.html")
+  .then(res => res.text())
+  .then(data => {
+      document.getElementById("menu-container").innerHTML = data;
 
-            // Cargar y ejecutar el script pcscript.js
-            const script = document.createElement('script');
-            script.src = 'barra/pcscript.js'; // Asegúrate de que la ruta sea correcta
-            script.onload = () => {
-                console.log("pcscript.js cargado después del header.");
-                if (typeof initMenu === "function") {
-                    initMenu(); // Llamar a la función de inicialización del menú
-                }
-            };
-            document.body.appendChild(script);
-        })
-        .catch(error => {
-            console.error('Error al cargar el header:', error);
-            // Puedes agregar un mensaje de error o alternativa si la carga falla
-            document.getElementById("menu-container").innerHTML = "<p>Error al cargar el menú.</p>";
-            document.getElementById("menu2-container").innerHTML = "<p>Error al cargar el menú.</p>";
-        });
-    </script>
+      const script = document.createElement('script');
+      script.src = 'barra/pcscript.js';
+      script.onload = () => {
+          console.log("pcscript.js cargado después del header.");
+          if (typeof initMenu === "function") {
+              initMenu(); // 👈 ahora sí se inicializa el menú
+          }
+      };
+      document.body.appendChild(script);
+  })
+  .catch(error => console.error('Error al cargar el header:', error));
+</script>
+
+ <script>
+fetch("barra/barrapc.html")
+  .then(res => res.text())
+  .then(data => {
+      // Insertamos el HTML del menú 2 en el contenedor correspondiente
+      document.getElementById("menu2-container").innerHTML = data;
+
+      // Cargamos el script específico para el menú 2
+      const script = document.createElement('script');
+      script.src = 'barra/pcscript.js';
+      script.onload = () => {
+          console.log("pcscript.js cargado después del header.");
+          
+          // Aseguramos que la función que inicializa el menú 2 esté disponible
+          if (typeof initMenu2 === "function") {
+              initMenu2(); // Inicializamos el menú 2
+          }
+      };
+      document.body.appendChild(script);
+  })
+  .catch(error => console.error('Error al cargar el header:', error));
+</script>
+   
     
 </body>
 </html>
