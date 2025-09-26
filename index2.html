@@ -25,49 +25,53 @@
     <div id="menu-container"></div>
     <div id="menu2-container"></div>
 
- <script>
-  // Comprobamos si ya se ha cargado el contenido anteriormente (usando localStorage)
-  if (!localStorage.getItem('barraLoaded')) {
-    // Cargar el primer contenido y el script de barra.js
+<script>
+  // Comprobar si ya se cargó el contenido de barra/barrapc.html
+  if (!localStorage.getItem('barraPCLoaded')) {
+    // Cargar el contenido de barra/barrapc.html y su script
     fetch("barra/barrapc.html")
       .then(res => res.text())
       .then(data => {
         document.getElementById("menu-container").innerHTML = data;
 
-        // Cargar el script una sola vez
+        // Cargar solo una vez el script barra.js
         const script = document.createElement('script');
         script.src = 'barra/barra.js';
         script.onload = () => {
-          console.log("barra.js cargado después del header.");
+          console.log("barra.js cargado para barrapc.html.");
           if (typeof initMenu === "function") {
-            initMenu(); // Inicializa el menú si está disponible
+            initMenu(); // Inicializa el menú si la función está disponible
           }
         };
         document.body.appendChild(script);
 
-        // Marcar que ya se ha cargado para evitar futuras recargas
-        localStorage.setItem('barraLoaded', 'true');
+        // Marcar que el contenido de barrapc.html ya fue cargado
+        localStorage.setItem('barraPCLoaded', 'true');
       })
-      .catch(error => console.error('Error al cargar el header:', error));
+      .catch(error => console.error('Error al cargar barra/barrapc.html:', error));
+  } else {
+    // Si ya se cargó previamente, asegúrate de que el contenido se muestre
+    document.getElementById("menu-container").innerHTML = "El contenido ya se ha cargado.";
   }
 
-  // Cargar el segundo contenido y el script para el menú 2
+  // Cargar barra/barra.html siempre que se necesite
   fetch("barra/barra.html")
     .then(res => res.text())
     .then(data => {
       document.getElementById("menu2-container").innerHTML = data;
 
+      // Cargar script barra.js de nuevo si es necesario
       const script = document.createElement('script');
       script.src = 'barra/barra.js';
       script.onload = () => {
-        console.log("barra.js cargado después del header.");
+        console.log("barra.js cargado para barra.html.");
         if (typeof initMenu2 === "function") {
-          initMenu2(); // Inicializa el menú 2 si está disponible
+          initMenu2(); // Inicializa el menú 2 si la función está disponible
         }
       };
       document.body.appendChild(script);
     })
-    .catch(error => console.error('Error al cargar el header:', error));
+    .catch(error => console.error('Error al cargar barra/barra.html:', error));
 </script>
 
     
