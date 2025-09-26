@@ -1,3 +1,4 @@
+// Función para inicializar el menú de escritorio
 function initMenu() {
     // Variables
     const logo = document.querySelector('#menu-container .logo');
@@ -25,9 +26,9 @@ function initMenu() {
         const arrow = dropdown.querySelector('i');
 
         dropdown.addEventListener('click', (event) => {
-            if (event.target.tagName.toLowerCase() === 'a') return; // permitir navegación
+            if (event.target.tagName.toLowerCase() === 'a') return; // Permitir navegación cuando se haga clic en un enlace
 
-            event.preventDefault();
+            event.preventDefault(); // Evitar comportamiento por defecto
 
             // Cerrar otros submenús
             dropdowns.forEach(otherDropdown => {
@@ -58,8 +59,9 @@ function initMenu() {
     });
 }
 
+// Función para inicializar el menú móvil
 function initMenu2() {
-    // Variables específicas para el menú 2
+    // Variables específicas para el menú móvil
     const logo2 = document.querySelector('#menu2-container .logo');
     const menuMobile2 = document.querySelector('#menu2-container .menu-mobile');
     const arrowIcon2 = document.querySelector('#menu2-container .logo i');
@@ -71,11 +73,11 @@ function initMenu2() {
     logo2.addEventListener('click', () => {
         isMenuOpen2 = !isMenuOpen2;
         menuMobile2.classList.toggle('active', isMenuOpen2);
-        arrowIcon2.classList.toggle('fa-chevron-up', isMenuOpen2); 
-        arrowIcon2.classList.toggle('fa-chevron-down', !isMenuOpen2); 
+        arrowIcon2.classList.toggle('fa-chevron-up', isMenuOpen2);
+        arrowIcon2.classList.toggle('fa-chevron-down', !isMenuOpen2);
     });
 
-    // Mostrar/ocultar submenús individuales (menú 2)
+    // Mostrar/ocultar submenús en el menú móvil
     dropdowns2.forEach(dropdown => {
         const arrow2 = dropdown.querySelector('i');
 
@@ -101,3 +103,9 @@ function initMenu2() {
         });
     });
 }
+
+// Llamar a las funciones para inicializar los menús una vez cargue el DOM
+document.addEventListener('DOMContentLoaded', () => {
+    initMenu();  // Inicializa el menú de escritorio
+    initMenu2(); // Inicializa el menú móvil
+});
