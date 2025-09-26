@@ -21,56 +21,30 @@
         <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
     </div>
 
-  <!-- Contenedores donde se cargará el contenido del menú -->
-    <div id="menu-container"></div>
-    <div id="menu2-container"></div>
+    <!-- Aquí se inyecta el contenido del menú desde barra/barra.html -->
+        <div id="dev"></div>
 
- <script>
-  // Comprobar si ya se cargó el contenido de barra/barrapc.html
-  if (!localStorage.getItem('barraPCLoaded')) {
-    // Cargar el contenido de barra/barrapc.html y su script
-    fetch("barra/barrapc.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("menu-container").innerHTML = data;
+    <!-- Cargar el archivo JavaScript de la barra -->
+    <script src="barra/barra.js"></script>
 
-        // Cargar solo una vez el script barra.js
-        const script = document.createElement('script');
-        script.src = 'barra/barra.js';
-        script.onload = () => {
-          console.log("barra.js cargado para barrapc.html.");
-          if (typeof initMenu === "function") {
-            initMenu(); // Inicializa el menú si la función está disponible
-          }
-        };
-        document.body.appendChild(script);
-
-        // Marcar que el contenido de barrapc.html ya fue cargado
-        localStorage.setItem('barraPCLoaded', 'true');
-      })
-      .catch(error => console.error('Error al cargar barra/barrapc.html:', error));
-  }
-
-  // Cargar barra/barra.html siempre que se necesite
-  fetch("barra/barra.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("menu2-container").innerHTML = data;
-
-      // Cargar script barra.js de nuevo si es necesario
-      const script = document.createElement('script');
-      script.src = 'barra/barra.js';
-      script.onload = () => {
-        console.log("barra.js cargado para barra.html.");
-        if (typeof initMenu2 === "function") {
-          initMenu2(); // Inicializa el menú 2 si la función está disponible
-        }
-      };
-      document.body.appendChild(script);
-    })
-    .catch(error => console.error('Error al cargar barra/barra.html:', error));
-</script>
-
+    <!-- Inyectar el archivo barra/barrapc.html con JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('barra/barrapc.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Inyectar el contenido de barra/barrapc.html en el div con id="dev"
+                    document.getElementById('dev').innerHTML = data;
+                    
+                    // Inicializar los menús una vez se haya inyectado el contenido
+                    initMenu();  // Para el menú de escritorio
+                    initMenu2(); // Para el menú móvil
+                })
+                .catch(error => {
+                    console.error("Error al cargar el archivo barra/barrapc.html:", error);
+                });
+        });
+    </script>
     
 </body>
 </html>
