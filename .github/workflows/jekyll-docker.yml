@@ -8,28 +8,13 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v4
-
-    - name: Setup Jekyll
+    - uses: actions/checkout@v4
+    - name: Build the site in the jekyll/builder container
       run: |
-        gem install bundler
-        bundle install
-
-    - name: Build the site with Jekyll
-      run: |
-        bundle exec jekyll build --future
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ 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 }}  # Asegúrate de usar el nombre correcto del secreto
-        publish_dir: ./_site  # El directorio generado por Jekyll
-        publish_branch: gh-pages  # Rama a la que se debe hacer el despliegue
-        allow_empty_commit: false
-        force_orphan: false
-        enable_jekyll: false
-        disable_nojekyll: false
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
