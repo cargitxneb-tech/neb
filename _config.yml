@@ -1,2 +1,4 @@
-plugins:
-  - jekyll-static-files
+title: Mi Blog
+description: "Un blog hecho con Jekyll"
+baseurl: ""
+url: "http://localhost:4000"
