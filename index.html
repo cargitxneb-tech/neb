@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi página</title> <!-- Título de la página -->
-  
+  <title>Mi página</title>
   <!-- Vincula barra.css -->
   <link rel="stylesheet" href="/barrax/barra.css">
 </head>
 <body>
 
-  <!-- Aquí se inyecta el contenido de barra.html -->
-  {{ site.static_files | where: "path", "barrax/barra.html" | first | read_file }}
+  <!-- Leer el archivo barra.html y mostrar su contenido -->
+  {% capture barra_content %}
+    {{ "barrax/barra.html" | read_file }}
+  {% endcapture %}
+  {{ barra_content }}
 
   <!-- Más contenido de la página -->
-
   <!-- Vincula barra.js -->
   <script src="/barrax/barra.js"></script>
 
