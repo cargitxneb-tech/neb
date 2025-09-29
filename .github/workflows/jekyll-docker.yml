@@ -2,25 +2,19 @@ name: Jekyll site CI
 
 on:
   push:
-    branches: [ "main" ]  # Trigger when changes are pushed to the 'main' branch
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]  # Trigger on pull requests to the 'main' branch
+    branches: [ "main" ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu image to run the workflow
+
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4  # Checkout the code from your repository
-
+    - uses: actions/checkout@v4
     - name: Build the site in the jekyll/builder container
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3  # Action to deploy to GitHub Pages
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}  # Automatically uses the token to authenticate
-        publish_dir: ./_site  # This is where Jekyll generates the site
