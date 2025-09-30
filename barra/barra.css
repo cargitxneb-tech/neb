@@ -149,7 +149,7 @@ body {
 }
 
 #menu2-container .btn {
-    background-color: #1877F2;
+    background-color: #184370;
     color: white;
     padding: 12px 18px;
     font-size: 16px;
@@ -189,7 +189,6 @@ body {
     #menu2-container .logo {
         font-size: 28px;
         font-weight: 700;
-        color: #3283ed;
         text-transform: uppercase;
         cursor: pointer;
         transition: color 0.3s ease;
@@ -376,6 +375,7 @@ body {
             display: none;
         }
     }
+
 
 
 
