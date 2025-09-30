@@ -47,7 +47,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 0px;
-    background-color: #E0E0E0;
+    background-color: #F7F7F7;
     color: black;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
@@ -376,6 +376,7 @@ body {
             display: none;
         }
     }
+
 
 
 
