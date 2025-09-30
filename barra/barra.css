@@ -1,7 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    background-color: #F2F2F2;
+    background-color: #F5F5F5;
     padding: 0;
     width: 100%;
     min-width: 322px;
@@ -9,7 +9,7 @@ body {
 
 .anuncio {
     width: 100%;
-    background-color: #F2F2F2;
+    background-color: #F5F5F5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,7 +83,7 @@ body {
 #menu2-container .menu-mobile {
     display: none;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: #F7F7F7;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 10px;
@@ -245,7 +245,7 @@ body {
         justify-content: space-between;
         align-items: center;
         padding: 10px 10px;
-        background-color: #ffffff;
+        background-color: #F7F7F7;
         color: black;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         border-radius: 12px;
@@ -280,7 +280,7 @@ body {
         top: 65px;
         left: 0;
         right: 0;
-        background-color: #ffffff;
+        background-color: #F7F7F7;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         padding: 10px;
         border-radius: 8px;
@@ -376,6 +376,7 @@ body {
             display: none;
         }
     }
+
 
 
 
