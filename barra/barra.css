@@ -70,7 +70,7 @@ body {
 }
 
 #menu2-container .logo:hover {
-    color: #1877F2;
+    color: #123961;
 }
 
 #menu2-container .logo i {
@@ -161,7 +161,7 @@ body {
 }
 
 #menu2-container .btn:hover {
-    background-color: #165f9e;
+    background-color: #184370;
     transform: translateY(-3px);
 }
 
@@ -265,7 +265,7 @@ body {
     }
 
     #menu-container .logo:hover {
-        color: #1877F2;
+        color: #123961;
     }
 
     #menu-container .logo i {
@@ -345,7 +345,7 @@ body {
     }
  
     #menu-container .btn {
-        background-color: #1877F2;
+        background-color: #184370;
         color: white;
         padding: 12px 25px;
         font-size: 20px;
@@ -356,7 +356,7 @@ body {
     }
 
     #menu-container .btn:hover {
-        background-color: #165f9e;
+        background-color: #184370;
         transform: translateY(-3px);
     }
 
@@ -375,6 +375,7 @@ body {
             display: none;
         }
     }
+
 
 
 
