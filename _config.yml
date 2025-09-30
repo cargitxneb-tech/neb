@@ -1,6 +1,0 @@
-- name: Deploy to GitHub Pages
-  uses: peaceiris/actions-gh-pages@v3
-  with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}  # Asegúrate de que esta línea esté presente
-    publish_dir: ./_site
-    target_branch: main  # Cambia esto a la rama que deseas usar para desplegar
