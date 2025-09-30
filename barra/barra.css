@@ -115,7 +115,7 @@ body {
 }
 
 #menu2-container .menu-mobile > div:hover {
-    color: #1877F2;
+    color: #123961;
     transform: translateY(-2px);
 }
 
@@ -308,7 +308,7 @@ body {
     }
 
     #menu-container .menu-horizontal > div:hover {
-        color: #1877F2;
+        color: #123961;
         transform: translateY(-2px);
     }
  
@@ -375,6 +375,7 @@ body {
             display: none;
         }
     }
+
 
 
 
